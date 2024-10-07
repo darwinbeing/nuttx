@@ -553,6 +553,12 @@ config RP2040_LCD_SPI_CH
 	---help---
 		Select SPI channel number to use LCD display.
 
+config RP2040_LCD_BL_GPIO
+	int "GPIO pin for LCD BL"
+	default 20
+	range 2 22
+	---help---
+		Refer to board documentation to see which pins are available.
 endif # LCD
 
 #####################################################################

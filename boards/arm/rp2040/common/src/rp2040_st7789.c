@@ -104,6 +104,12 @@ int board_lcd_initialize(void)
 
 #endif
 
+#if defined(CONFIG_RP2040_LCD_BL_GPIO)
+  rp2040_gpio_init(CONFIG_RP2040_LCD_BL_GPIO);
+  rp2040_gpio_setdir(CONFIG_RP2040_LCD_BL_GPIO, true);
+  rp2040_gpio_put(CONFIG_RP2040_LCD_BL_GPIO, true);
+#endif
+
   return OK;
 }
 
