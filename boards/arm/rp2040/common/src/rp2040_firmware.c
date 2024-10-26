@@ -34,6 +34,10 @@
 
 #define ROUNDED_FIRMWARE_LEN ((CONFIG_CYW43439_FIRMWARE_LEN + 0xff) & ~0xff)
 
+#ifndef CYW43_RESOURCE_ATTRIBUTE
+#define CYW43_RESOURCE_ATTRIBUTE __attribute__((aligned(4)))
+#endif
+
 /****************************************************************************
  * Public Data
  ****************************************************************************/
@@ -127,18 +131,18 @@ extern const unsigned int  g_cyw43439_clm_blob_len;
  *      contains the length of the clm_blob.
  */
 
+#include <cyw43439.firmware.image>
+
 __asm__("\n     .balign  16"
         "\n     .globl   g_cyw43439_firmware_image"
         "\n     .globl   g_cyw43439_clm_blob_image"
         "\n     .globl   g_cyw43439_clm_blob_len"
-        "\n g_cyw43439_firmware_image:"
-        "\n     .incbin  \"cyw43439.firmware.image\""
-        "\n firmware_end:"
+        "\n g_cyw43439_firmware_image = w43439A0_7_95_49_00_combined"
         "\n g_cyw43439_clm_blob_image=g_cyw43439_firmware_image+"
                          STR(ROUNDED_FIRMWARE_LEN)
         "\n     .balign  4"
         "\n g_cyw43439_clm_blob_len:"
-        "\n     .word    firmware_end-g_cyw43439_clm_blob_image"
+        "\n     .word    " STR(CYW43_CLM_LEN)
         "\n");
 
 /****************************************************************************

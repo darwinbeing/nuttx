@@ -15,7 +15,7 @@ if RP2040_INFINEON_CYW43439
 
 config CYW43439_FIRMWARE_BIN_PATH
 	string "Path to Infineon 43439 firmware file"
-	default "${PICO_SDK_PATH}/lib/cyw43-driver/firmware/43439A0-7.95.49.00.combined"
+	default "${PICO_SDK_PATH}/lib/cyw43-driver/firmware/w43439A0_7_95_49_00_combined.h"
 	---help---
 		This should be a path to a file containing both the cyw43439 firmware and
 		the CLB blob.  The firmware should be padded to a 256 byte boundary and
